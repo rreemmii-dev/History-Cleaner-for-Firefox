@@ -1,0 +1,39 @@
+// ----- UTILS -----
+
+function isPlural(n) {
+    return (n >= 2) ? "s" : "";
+}
+
+function addLeadingZeros(totalLength, number) {
+    return String(number).padStart(totalLength, "0");
+}
+
+function formatDate(date) {
+    let year = date.getFullYear();
+    let month = addLeadingZeros(2, date.getMonth() + 1);
+    let day = addLeadingZeros(2, date.getDate());
+    return String(year) + "-" + String(month) + "-" + String(day);
+}
+
+
+// ----- SHORTCUTS -----
+
+async function createNotification(title, message) {
+    await browser.notifications.create(
+        {
+            "type": "basic",
+            "title": title,
+            "message": message
+        }
+    );
+}
+
+async function getHistoryData() {
+    let res = await browser.storage.local.get("history");
+    return res.history;
+}
+
+async function getCacheData() {
+    let res = await browser.storage.local.get("cache");
+    return res.cache;
+}

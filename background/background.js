@@ -1,65 +1,84 @@
-// ----- UTILS -----
+// ----- FUNCTIONS -----
 
-function addLeadingZeros(totalLength, number) {
-    return String(number).padStart(totalLength, "0");
+async function manageHistory() {
+    let historyData = await getHistoryData();
+
+    if (historyData["enabled"]) {
+        let now = new Date();
+        let months = historyData["months"];
+        let days = historyData["days"];
+        let endTime = new Date(now.getFullYear(), now.getMonth() - months, now.getDate() - days);
+
+        await browser.history.deleteRange({
+            startTime: 0,
+            endTime: endTime
+        });
+        await createNotification(
+            "History Deleted",
+            "History before " + formatDate(endTime) + " has been deleted"
+        );
+    }
 }
 
-function formatDate(date) {
-    let year = date.getFullYear();
-    let month = addLeadingZeros(2, date.getMonth() + 1);
-    let day = addLeadingZeros(2, date.getDate());
-    return year + "-" + month + "-" + day;
-}
+async function manageCache() {
+    let cacheData = await getCacheData();
 
+    if (cacheData["enabled"]) {
+        let last = cacheData["last"];
+        let months = cacheData["months"];
+        let days = cacheData["days"];
+        let lastDate = new Date(last);
+        let nextDate = new Date(lastDate.getFullYear(), lastDate.getMonth() + months, lastDate.getDate() + days);
 
-
-// ----- SHORTCUTS -----
-
-function createNotification(title, message) {
-    browser.notifications.create(
-        {
-            "type": "basic",
-            "title": title,
-            "message": message
+        let now = new Date();
+        if (nextDate.getTime() < now.getTime()) {
+            await browser.browsingData.removeCache({});
+            await createNotification(
+                "Cache Deleted",
+                "Cache has been deleted"
+            );
+            cacheData["last"] = now.getTime();
+            await browser.storage.local.set(cacheData);
         }
-    );
+    }
 }
 
-
-
-// ----- DATES -----
-
-const SECOND = 1000;
-const MINUTE = 60 * SECOND;
-const HOUR = 60 * MINUTE;
-const DAY = 24 * HOUR;
-const MONTH = 30 * DAY;
-
-function endDate() {
-    let now = new Date();
-    let aMonthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
-    return aMonthAgo;
+async function setupStorage() {
+    await browser.storage.local.clear();
+    await browser.storage.local.set({
+        "cache": {
+            "days": 0,
+            "months": 0,
+            "enabled": false,
+            "last": Date.now()
+        },
+        "history": {
+            "days": 0,
+            "months": 0,
+            "enabled": false
+        }
+    });
 }
-
 
 
 // ----- MAIN -----
 
-function main() {
-    let endTime = endDate()
-
-    browser.history.deleteRange({
-        startTime: 0,
-        endTime: endTime
+async function main() {
+    browser.runtime.onInstalled.addListener((details) => {
+        if (details.reason === "install") {
+            setupStorage().then(() => {
+                browser.runtime.openOptionsPage();
+                createNotification("Extension successfully installed", "");
+            });
+        }
     });
-    createNotification(
-        "History Deleted",
-        "History before " + formatDate(endTime) + " has been deleted"
-    );
-}
 
-if (!browser.browserAction.onClicked.hasListener(main)) {
-    browser.browserAction.onClicked.addListener(main);
+    browser.browserAction.onClicked.addListener(() => {
+        browser.runtime.openOptionsPage();
+    });
+
+    await manageHistory();
+    await manageCache();
 }
 
 main();

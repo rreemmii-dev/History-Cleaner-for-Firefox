@@ -1,13 +1,12 @@
 {
     "manifest_version": 2,
     "name": "History Cleaner",
-    "version": "1.0",
+    "version": "2.0",
     "developer": {
         "name": "RREEMMII",
         "url": "https://github.com/rreemmii-dev/History-Cleaner-for-Firefox"
     },
-    
-    "description": "This extension clears your history after a month",
+    "description": "This extension allows you to have a history retention period, and planned cache deletion",
 
     "browser_specific_settings": {
         "gecko": {
@@ -15,25 +14,33 @@
         }
     },
 
+    "browser_action": {
+        "theme_icons": [{
+            "light": "icons/icon_white_32.png",
+            "dark": "icons/icon_black_32.png",
+            "size": 32
+        }],
+        "default_title": "History Cleaner"
+    },
+
     "icons": {
         "48": "icons/icon_48.png",
         "96": "icons/icon_96.png"
     },
-    
+
+    "options_ui": {
+        "page": "options/options.html",
+        "browser_style": true
+    },
+
     "permissions": [
+        "storage",
+        "notifications",
         "browsingData",
-        "history",
-        "notifications"
+        "history"
     ],
 
     "background": {
-        "scripts": [
-            "background/background.js"
-        ]
-    },
-
-    "browser_action": {
-        "default_icon": "icons/icon.png",
-        "default_title": "History Cleaner"
+        "page": "background/background.html"
     }
 }
