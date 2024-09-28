@@ -1,7 +1,7 @@
 // ----- UTILS -----
 
-function isPlural(n) {
-    return (n >= 2) ? "s" : "";
+function pluralS(label, n) {
+    return (n >= 2) ? label + "s" : label;
 }
 
 function addLeadingZeros(totalLength, number) {
@@ -12,7 +12,7 @@ function formatDate(date) {
     let year = date.getFullYear();
     let month = addLeadingZeros(2, date.getMonth() + 1);
     let day = addLeadingZeros(2, date.getDate());
-    return String(year) + "-" + String(month) + "-" + String(day);
+    return `${year}-${month}-${day}`;
 }
 
 

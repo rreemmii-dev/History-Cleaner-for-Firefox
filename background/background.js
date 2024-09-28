@@ -7,15 +7,15 @@ async function manageHistory() {
         let now = new Date();
         let months = historyData["months"];
         let days = historyData["days"];
-        let endTime = new Date(now.getFullYear(), now.getMonth() - months, now.getDate() - days);
+        let endDate = new Date(now.getFullYear(), now.getMonth() - months, now.getDate() - days);
 
         await browser.history.deleteRange({
             startTime: 0,
-            endTime: endTime
+            endTime: endDate
         });
         await createNotification(
             "History Deleted",
-            "History before " + formatDate(endTime) + " has been deleted"
+            `History before ${formatDate(endDate)} has been deleted`
         );
     }
 }

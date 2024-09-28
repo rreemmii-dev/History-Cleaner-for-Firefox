@@ -19,7 +19,7 @@ async function saveHistoryDelay(e) {
         }
     });
     if (enabled) {
-        await createNotification("History retention period updated", "The retention period for your history is now " + String(months) + " month" + isPlural(months) + " and " + String(days) + " day" + isPlural(days) + ".");
+        await createNotification("History retention period updated", `The retention period for your history is now ${months} ${pluralS("month", months)} and ${days} ${pluralS("day", days)}.`);
     } else {
         await createNotification("History deletion disabled", "Your history won't be cleared anymore.");
     }
@@ -63,7 +63,7 @@ async function saveCacheDelay(e) {
         }
     })
     if (enabled) {
-        await createNotification("Cache deletion delay updated", "The cache will be emptied every " + String(months) + " month" + isPlural(months) + " and " + String(days) + " day" + isPlural(days) + ".");
+        await createNotification("Cache deletion delay updated", `The cache will be emptied every ${months} ${pluralS("month", months)} and ${days} ${pluralS("day", days)}.`);
     } else {
         await createNotification("Cache deletion disabled", "Your cache won't be cleared anymore.");
     }
