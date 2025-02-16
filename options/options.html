@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Options</title>
     <script src="../utils/utils.js"></script>
+    <script src="history.js"></script>
+    <script src="cache.js"></script>
     <script src="options.js"></script>
-    <link type="text/css" href="options.css" rel="stylesheet">
+    <link rel="stylesheet" href="options.css">
 </head>
 <body>
 <div>
-    Current history retention period:
-    <ul>
-        <li>Enabled: <span id="enabled_history_span">default</span></li>
-        <li>Months: <span id="months_history_span">default</span></li>
-        <li>Days: <span id="days_history_span">default</span></li>
-    </ul>
+    <span class="title">History retention period</span>
+    <div>
+        <input type="checkbox" id="enable_history" class="enable_checkbox">
+        <label for="enable_history">Enable history deletion</label>
+        <br>
+        <div id="body_history">
+            Your history retention period is:
+            <input type="number" id="days_history" class="number_input">
+            <label for="days_history">days</label>
+            and
+            <input type="number" id="months_history" class="number_input">
+            <label for="months_history">months</label>
+            <br>
+        </div>
+        <button type="submit" id="submit_history" class="save_button">Save</button>
+        <span class="horizontal_separator"></span>
+        <button type="button" id="restore_history" class="restore_button">Restore to previous value</button>
+    </div>
 </div>
-<br>
+<hr class="vertical_separator">
 <div>
-    The history retention period will be
-    <input type="number" id="days_history">
-    <label for="days_history">days</label>
-    and
-    <input type="number" id="months_history">
-    <label for="months_history">months</label>
-    <br>
-    <input type="checkbox" id="enable_history"> <label for="enable_history">Enable history retention period</label>
-    <br>
-    <button type="submit" id="submit_history">Save</button>
+    <span class="title">Cache deletion period</span>
+    <div>
+        <input type="checkbox" id="enable_cache" class="enable_checkbox">
+        <label for="enable_cache">Enable cache deletion</label>
+        <br>
+        <div id="body_cache">
+            Your cache deletion period is:
+            <input type="number" id="days_cache" class="number_input">
+            <label for="days_cache">days</label>
+            and
+            <input type="number" id="months_cache" class="number_input">
+            <label for="months_cache">months</label>
+            <br>
+        </div>
+        <button type="submit" id="submit_cache" class="save_button">Save</button>
+        <span class="horizontal_separator"></span>
+        <button type="button" id="restore_cache" class="restore_button">Restore to previous value</button>
 </div>
-<hr style="width: 100%">
-<div>
-    Current cache deletion period:
-    <ul>
-        <li>Enabled: <span id="enabled_cache_span">default</span></li>
-        <li>Months: <span id="months_cache_span">default</span></li>
-        <li>Days: <span id="days_cache_span">default</span></li>
-    </ul>
-</div>
-<br>
-<div>
-    The cache will be deleted after
-    <input type="number" id="days_cache">
-    <label for="days_cache">days</label>
-    and
-    <input type="number" id="months_cache">
-    <label for="months_cache">months</label>
-    <br>
-    <input type="checkbox" id="enable_cache"> <label for="enable_cache">Enable cache deletion period</label>
-    <br>
-    <button type="submit" id="submit_cache">Save</button>
 </div>
 </body>
 </html>

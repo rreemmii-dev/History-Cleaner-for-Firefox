@@ -1,7 +1,50 @@
-div {
+body {
     margin: 1%;
 }
 
-input {
-    width: 10%;
+button {
+    padding: 3px 5px;
+    border-radius: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+div {
+    padding: 5px;
+}
+
+
+.title {
+    font-size: large;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.vertical_separator {
+    width: calc(100% - 2 * 20px);
+    margin: 20px;
+}
+
+.horizontal_separator {
+    display: inline-block;
+    width: 50%;
+}
+
+.number_input {
+    -moz-appearance: textfield;
+    width: 75px;
+}
+
+.hidden {
+    opacity: 0.5;
+}
+
+.save_button {
+    background-color: lightgreen;
+}
+
+.restore_button {
+    background-color: lightpink;
 }
