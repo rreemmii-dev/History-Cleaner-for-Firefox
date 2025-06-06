@@ -1,16 +1,16 @@
 {
     "manifest_version": 2,
     "name": "History Cleaner",
-    "version": "2.2.1a",
+    "version": "1.0.0",
     "developer": {
         "name": "RREEMMII",
         "url": "https://github.com/rreemmii-dev/History-Cleaner-for-Firefox"
     },
-    "description": "This extension allows you to have a history retention period, and planned cache deletion",
+    "description": "An extension to set a custom history retention and cache deletion period",
 
     "browser_specific_settings": {
         "gecko": {
-            "id": "history-cleaner@rreemmii"
+            "id": "history-cleaner@rreemmii-dev"
         }
     },
 

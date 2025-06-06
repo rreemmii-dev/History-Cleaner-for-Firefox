@@ -1,5 +1,3 @@
-// ----- FUNCTIONS -----
-
 async function manageHistory() {
     let historyData = await getHistoryData();
 
@@ -43,6 +41,7 @@ async function manageCache() {
     }
 }
 
+
 async function setupStorage() {
     await browser.storage.local.clear();
     await browser.storage.local.set({
@@ -60,8 +59,6 @@ async function setupStorage() {
     });
 }
 
-
-// ----- MAIN -----
 
 async function main() {
     browser.runtime.onInstalled.addListener((details) => {

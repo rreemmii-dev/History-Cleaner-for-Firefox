@@ -1,5 +1,3 @@
-// ----- UTILS -----
-
 function pluralS(label, n) {
     return (n >= 2) ? label + "s" : label;
 }
@@ -15,8 +13,6 @@ function formatDate(date) {
     return `${year}-${month}-${day}`;
 }
 
-
-// ----- SHORTCUTS -----
 
 async function createNotification(title, message) {
     await browser.notifications.create(

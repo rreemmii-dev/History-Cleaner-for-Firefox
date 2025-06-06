@@ -1,5 +1,3 @@
-// ----- UI / UX -----
-
 function history_checkbox_updated(checkbox) {
     let body = document.getElementById("body_history");
     let days = document.getElementById("days_history");
@@ -51,8 +49,6 @@ async function cache_restore_clicked() {
     cache_checkbox_updated(checkbox);
 }
 
-
-// ----- ON LOADED -----
 
 async function onLoaded() {
     await prefillHistory();

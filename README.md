@@ -1,9 +1,11 @@
 # History-Cleaner-for-Firefox
 
-This extension for Firefox allows you to have a history retention period, and planned cache deletion
+A Firefox extension to set a custom history retention and cache deletion period
 
-You can install the extension by following these steps:
+![settings page screenshot](https://rreemmii-dev.github.io/history-cleaner-for-firefox/screenshot.png)
+
+To install the extension:
 * Download the latest [release](https://github.com/rreemmii-dev/History-Cleaner-for-Firefox/releases)
 * Open it with Firefox
-* Click on the Add button
+* Click on the "Add" button
 * Voilà!

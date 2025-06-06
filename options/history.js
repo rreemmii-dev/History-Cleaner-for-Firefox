@@ -1,12 +1,6 @@
 async function saveHistoryDelay() {
-    let days = parseInt(document.getElementById("days_history").value);
-    if (isNaN(days)) {
-        days = 0;
-    }
-    let months = parseInt(document.getElementById("months_history").value);
-    if (isNaN(months)) {
-        months = 0;
-    }
+    let days = parseInt(document.getElementById("days_history").value) || 0;
+    let months = parseInt(document.getElementById("months_history").value) || 0;
     let enabled = document.getElementById("enable_history").checked;
     await browser.storage.local.set({
         "history": {
@@ -16,11 +10,12 @@ async function saveHistoryDelay() {
         }
     });
     if (enabled) {
-        await createNotification("History retention period updated", `The retention period for your history is now ${months} ${pluralS("month", months)} and ${days} ${pluralS("day", days)}.`);
+        await createNotification("History retention period updated", `Your browsing history will be deleted after ${months} ${pluralS("month", months)} and ${days} ${pluralS("day", days)}.`);
     } else {
-        await createNotification("History deletion disabled", "Your history will not be cleared anymore.");
+        await createNotification("History deletion disabled", "Your browsing history will no longer be automatically deleted.");
     }
 }
+
 
 async function prefillHistory() {
     let historyData = await getHistoryData();
