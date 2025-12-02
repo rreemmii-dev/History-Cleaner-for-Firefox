@@ -1,4 +1,4 @@
-async function saveHistoryDelay() {
+async function saveHistoryConfig() {
     let days = parseInt(document.getElementById("days_history").value) || 0;
     let months = parseInt(document.getElementById("months_history").value) || 0;
     let enabled = document.getElementById("enable_history").checked;
@@ -17,9 +17,9 @@ async function saveHistoryDelay() {
 }
 
 
-async function prefillHistory() {
-    let historyData = await getHistoryData();
-    document.getElementById("days_history").value = historyData["days"];
-    document.getElementById("months_history").value = historyData["months"];
-    document.getElementById("enable_history").checked = historyData["enabled"];
+async function prefillHistoryConfig() {
+    let historyConfig = await getHistoryConfig();
+    document.getElementById("days_history").value = historyConfig["days"];
+    document.getElementById("months_history").value = historyConfig["months"];
+    document.getElementById("enable_history").checked = historyConfig["enabled"];
 }

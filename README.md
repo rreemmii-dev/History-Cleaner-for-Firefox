@@ -1,6 +1,9 @@
 # History-Cleaner-for-Firefox
 
-A Firefox extension to set a custom history retention and cache deletion period
+A Firefox extension to:
+* Set a custom history retention period 
+* Set a custom cache deletion period
+* Remove your old cookies
 
 ![settings page screenshot](https://rreemmii-dev.github.io/history-cleaner-for-firefox/main.png)
 

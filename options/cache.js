@@ -1,4 +1,4 @@
-async function saveCacheDelay() {
+async function saveCacheConfig() {
     let days = parseInt(document.getElementById("days_cache").value) || 0;
     let months = parseInt(document.getElementById("months_cache").value) || 0;
     let enabled = document.getElementById("enable_cache").checked;
@@ -18,9 +18,9 @@ async function saveCacheDelay() {
 }
 
 
-async function prefillCache() {
-    let cacheData = await getCacheData();
-    document.getElementById("days_cache").value = cacheData["days"];
-    document.getElementById("months_cache").value = cacheData["months"];
-    document.getElementById("enable_cache").checked = cacheData["enabled"];
+async function prefillCacheConfig() {
+    let cacheConfig = await getCacheConfig();
+    document.getElementById("days_cache").value = cacheConfig["days"];
+    document.getElementById("months_cache").value = cacheConfig["months"];
+    document.getElementById("enable_cache").checked = cacheConfig["enabled"];
 }

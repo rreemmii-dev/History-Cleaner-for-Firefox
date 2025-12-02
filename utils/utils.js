@@ -24,12 +24,17 @@ async function createNotification(title, message) {
     );
 }
 
-async function getHistoryData() {
+async function getHistoryConfig() {
     let res = await browser.storage.local.get("history");
     return res.history;
 }
 
-async function getCacheData() {
+async function getCacheConfig() {
     let res = await browser.storage.local.get("cache");
     return res.cache;
+}
+
+async function getCookiesConfig() {
+    let res = await browser.storage.local.get("cookies");
+    return res.cookies;
 }

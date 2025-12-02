@@ -6,6 +6,7 @@
     <script src="../utils/utils.js"></script>
     <script src="history.js"></script>
     <script src="cache.js"></script>
+    <script src="cookies.js"></script>
     <script src="options.js"></script>
     <link rel="stylesheet" href="options.css">
 </head>
@@ -49,6 +50,21 @@
         <button type="submit" id="submit_cache" class="save_button">Save</button>
         <span class="horizontal_separator"></span>
         <button type="button" id="restore_cache" class="restore_button">Restore to previous value</button>
+    </div>
+</div>
+<hr class="vertical_separator">
+<div>
+    <span class="title">Cookies deletion</span>
+    <div>
+        <input type="checkbox" id="enable_cookies" class="enable_checkbox">
+        <label for="enable_cookies">Enable cookies deletion</label>
+        <br>
+        <div>
+            Cookies will be deleted if the associated URL is not in your history
+        </div>
+        <button type="submit" id="submit_cookies" class="save_button">Save</button>
+        <span class="horizontal_separator"></span>
+        <button type="button" id="restore_cookies" class="restore_button">Restore to previous value</button>
     </div>
 </div>
 </body>

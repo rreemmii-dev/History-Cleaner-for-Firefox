@@ -1,16 +1,19 @@
 {
     "manifest_version": 2,
     "name": "History Cleaner",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "developer": {
         "name": "RREEMMII",
         "url": "https://github.com/rreemmii-dev/History-Cleaner-for-Firefox"
     },
-    "description": "An extension to set a custom history retention and cache deletion period",
+    "description": "An extension to set a custom history retention and cache deletion period, and remove your old cookies",
 
     "browser_specific_settings": {
         "gecko": {
-            "id": "history-cleaner@rreemmii-dev"
+            "id": "history-cleaner@rreemmii-dev",
+            "data_collection_permissions": {
+                "required": ["none"]
+            }
         }
     },
 
@@ -37,7 +40,9 @@
         "storage",
         "notifications",
         "browsingData",
-        "history"
+        "history",
+        "cookies",
+        "<all_urls>"
     ],
 
     "background": {

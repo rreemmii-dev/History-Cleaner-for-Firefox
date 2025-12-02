@@ -1,4 +1,4 @@
-function history_checkbox_updated(checkbox) {
+function historyCheckboxUpdated(checkbox) {
     let body = document.getElementById("body_history");
     let days = document.getElementById("days_history");
     let months = document.getElementById("months_history");
@@ -13,7 +13,7 @@ function history_checkbox_updated(checkbox) {
     }
 }
 
-function cache_checkbox_updated(checkbox) {
+function cacheCheckboxUpdated(checkbox) {
     let body = document.getElementById("body_cache");
     let days = document.getElementById("days_cache");
     let months = document.getElementById("months_cache");
@@ -28,39 +28,47 @@ function cache_checkbox_updated(checkbox) {
     }
 }
 
-function history_checkbox_clicked(event) {
-    history_checkbox_updated(event.target);
+function historyCheckboxClicked(event) {
+    historyCheckboxUpdated(event.target);
 }
 
-function cache_checkbox_clicked(event) {
-    cache_checkbox_updated(event.target);
+function cacheCheckboxClicked(event) {
+    cacheCheckboxUpdated(event.target);
 }
 
 
-async function history_restore_clicked() {
-    await prefillHistory();
+async function historyRestoreClicked() {
+    await prefillHistoryConfig();
     let checkbox = document.getElementById("enable_history");
-    history_checkbox_updated(checkbox);
+    historyCheckboxUpdated(checkbox);
 }
 
-async function cache_restore_clicked() {
-    await prefillCache();
+async function cacheRestoreClicked() {
+    await prefillCacheConfig();
     let checkbox = document.getElementById("enable_cache");
-    cache_checkbox_updated(checkbox);
+    cacheCheckboxUpdated(checkbox);
+}
+
+async function cookiesRestoreClicked() {
+    await prefillCookiesConfig();
 }
 
 
 async function onLoaded() {
-    await prefillHistory();
-    document.getElementById("submit_history").addEventListener("click", saveHistoryDelay);
-    document.getElementById("restore_history").addEventListener("click", history_restore_clicked);
+    await prefillHistoryConfig();
+    document.getElementById("submit_history").addEventListener("click", saveHistoryConfig);
+    document.getElementById("restore_history").addEventListener("click", historyRestoreClicked);
 
-    await prefillCache();
-    document.getElementById("submit_cache").addEventListener("click", saveCacheDelay);
-    document.getElementById("restore_cache").addEventListener("click", cache_restore_clicked);
+    await prefillCacheConfig();
+    document.getElementById("submit_cache").addEventListener("click", saveCacheConfig);
+    document.getElementById("restore_cache").addEventListener("click", cacheRestoreClicked);
 
-    document.getElementById("enable_history").addEventListener("click", history_checkbox_clicked);
-    document.getElementById("enable_cache").addEventListener("click", cache_checkbox_clicked);
+    await prefillCookiesConfig();
+    document.getElementById("submit_cookies").addEventListener("click", saveCookiesConfig);
+    document.getElementById("restore_cookies").addEventListener("click", cookiesRestoreClicked);
+
+    document.getElementById("enable_history").addEventListener("click", historyCheckboxClicked);
+    document.getElementById("enable_cache").addEventListener("click", cacheCheckboxClicked);
 }
 
 document.addEventListener("DOMContentLoaded", onLoaded);
