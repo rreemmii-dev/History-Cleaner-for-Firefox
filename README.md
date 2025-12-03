@@ -5,7 +5,7 @@ A Firefox extension to:
 * Set a custom cache deletion period
 * Remove your old cookies
 
-![settings page screenshot](https://rreemmii-dev.github.io/history-cleaner-for-firefox/main.png)
+![settings page screenshot](https://rreemmii-dev.github.io/history-cleaner-for-firefox/settings.png)
 
 To install the extension:
 * Download the latest [release](https://github.com/rreemmii-dev/History-Cleaner-for-Firefox/releases)
